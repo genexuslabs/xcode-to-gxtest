@@ -1,5 +1,8 @@
 # xcode-to-gxtest
 Small utility to transform Xcode output to required GXtest format
+
+WARNING: Currently under development!
+
 ## Building
 ```
 build.bat
