@@ -1,0 +1,49 @@
+Test Suite 'All tests' started at 2019-08-22 13:35:08.291
+Test Suite 'WorkWithDevicesRecordUITests.xctest' started at 2019-08-22 13:35:08.330
+Test Suite 'WorkWithDevicesRecordUITests' started at 2019-08-22 13:35:08.330
+Test Case '-[WorkWithDevicesRecordUITests.WorkWithDevicesRecordUITests testExample]' started.
+    t =     0.00s Start Test at 2019-08-22 13:35:08.332
+    t =     0.14s Set Up
+    t =     0.15s     Open com.artech.WorkWithDevicesRecord
+    t =     0.18s         Launch com.artech.WorkWithDevicesRecord
+    t =     6.32s             Wait for com.artech.WorkWithDevicesRecord to idle
+    t =     7.71s Tear Down
+Test Case '-[WorkWithDevicesRecordUITests.WorkWithDevicesRecordUITests testExample]' passed (7.917 seconds).
+Test Case '-[WorkWithDevicesRecordUITests.WorkWithDevicesRecordUITests testTestWorkWithDevicesRecordInsertButton]' started.
+    t =     0.00s Start Test at 2019-08-22 13:35:16.249
+    t =     0.02s Set Up
+    t =     0.02s     Open com.artech.WorkWithDevicesRecord
+    t =     0.04s         Launch com.artech.WorkWithDevicesRecord
+    t =     0.04s             Terminate com.artech.WorkWithDevicesRecord:93598
+    t =     4.88s             Wait for com.artech.WorkWithDevicesRecord to idle
+    t =    12.20s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.31s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.34s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.36s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.39s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.41s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.43s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.46s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.48s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.51s Get number of matches for: Elements matching predicate '"Buttoninsert" IN identifiers'
+    t =    12.54s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.56s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.59s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.62s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.64s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.67s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.69s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.72s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.75s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.77s Get number of matches for: Elements matching predicate '"ButtonInsert" IN identifiers'
+    t =    12.80s Get number of matches for: Elements matching predicate '"Share" IN identifiers'
+    t =    12.83s Get number of matches for: Elements matching predicate '"Share" IN identifiers'
+    t =    12.86s Assertion Failure: GXUITestingAPI.swift:366: XCTAssertTrue failed - Could not find control with name 'ButtonInsert'
+    t =    12.87s Tear Down
+Test Case '-[WorkWithDevicesRecordUITests.WorkWithDevicesRecordUITests testTestWorkWithDevicesRecordInsertButton]' failed (12.872 seconds).
+Test Suite 'WorkWithDevicesRecordUITests' failed at 2019-08-22 13:35:29.122.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 20.789 (20.791) seconds
+Test Suite 'WorkWithDevicesRecordUITests.xctest' failed at 2019-08-22 13:35:29.122.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 20.789 (20.793) seconds
+Test Suite 'All tests' failed at 2019-08-22 13:35:29.123.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 20.789 (20.832) seconds
