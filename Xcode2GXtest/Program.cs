@@ -21,6 +21,7 @@ namespace Xcode2GXtest
 			if (!File.Exists(fileName))
 			{
 				Console.WriteLine($"File not found: {fileName}");
+				Console.ReadKey();
 				return;
 			}
 
@@ -37,49 +38,15 @@ namespace Xcode2GXtest
 		static string TransformXcodeInput(StreamReader stream)
 		{
 			StringBuilder result = new StringBuilder();
-			string s = "";
-			while ((s = stream.ReadLine()) != null)
+
+			XcodeOutputProcessor processor = new XcodeOutputProcessor();
+			foreach (TestCase t in processor.ProcessOutput(stream))
 			{
-				string testName;
-				XcodeTestResult testResult;
-				double testElapsed;
-				if (ReadTestCaseResult(s, out testName, out testResult, out testElapsed)) {
-					string testResultStr = testResult == XcodeTestResult.Passed ? "passed" : "failed";
-					result.AppendLine($"Test '{testName}' {testResultStr} in {testElapsed} seconds.");
-				}
+				string errMsg = t.Status ? "" : $" ({t.Message})";
+				result.Append($"Test '{t.Name}' {t.StatusString} in {t.Duration} seconds{errMsg}.\n");
 			}
 
 			return result.ToString();
-		}
-
-		enum XcodeTestResult
-		{
-			Passed,
-			Failed
-		}
-
-		static bool ReadTestCaseResult(string line, out string testName, out XcodeTestResult result, out double elapsed)
-		{
-			// Test Case '-[WorkWithDevicesRecordUITests.WorkWithDevicesRecordUITests testExample]' passed (7.917 seconds).
-			// Test Case '-[WorkWithDevicesRecordUITests.WorkWithDevicesRecordUITests testTestWorkWithDevicesRecordInsertButton]' failed (12.872 seconds).
-			string regExPattern = @"Test Case '-\[[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+ test(?<testname>[a-zA-Z0-9]+)\]' (?<result>(passed|failed)) \((?<elapsed>[0-9\.]+) seconds\)\.";
-			Regex regEx = new Regex(regExPattern);
-			Match m = regEx.Match(line);
-			if (m.Success)
-			{
-				testName = m.Groups["testname"].ToString();
-				result = m.Groups["result"].ToString() == "passed" ? XcodeTestResult.Passed : XcodeTestResult.Failed;
-				Double.TryParse(m.Groups["elapsed"].ToString(), out elapsed);
-				Double.TryParse(m.Groups["elapsed"].ToString(), NumberStyles.Number, CultureInfo.CreateSpecificCulture("en-US"), out elapsed);
-				return true;
-			}
-			else
-			{
-				testName = null;
-				result = XcodeTestResult.Failed;
-				elapsed = 0;
-				return false;
-			}
 		}
     }
 }
