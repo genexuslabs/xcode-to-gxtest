@@ -1,26 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Xcode2GXtest
 {
     public class TestCase
     {
-		public string Name { get; private set; }
+		public string Name { get; set; }
 
-		public bool Status { get; private set; }
+		public bool Status { get; set; }
 
-		public DateTime Started { get; private set; }
+		[XmlElement(ElementName = "StartedAt")]
+		public DateTime Started { get; set; }
 
-		public double Duration { get; private set; }
+		[XmlElement(ElementName = "ElapsedTime")]
+		public double Duration { get; set; }
 
-		public string Message { get; private set; }
+		[XmlElement(ElementName = "ErrorMsg")]
+		public string Message { get; set; }
 
+		[XmlIgnore]
 		public string StatusString
 		{
 			get {
 				return Status ? "passed" : "failed";
 			}
+		}
+
+		public TestCase()
+		{
+			Name = "";
+			Status = false;
+			Started = DateTime.Now;
+			Duration = 0;
+			Message = "";
 		}
 
 		public TestCase(string name, bool status, DateTime startedAt, double duration, string message)

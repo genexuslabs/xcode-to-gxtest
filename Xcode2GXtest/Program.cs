@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Globalization;
+using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Xcode2GXtest
 {
@@ -31,22 +30,16 @@ namespace Xcode2GXtest
 				Console.Write(transformed);
 			}
 
+			Console.WriteLine();
 			Console.Write("Press any key to continue...");
 			Console.ReadKey();
         }
 
 		static string TransformXcodeInput(StreamReader stream)
 		{
-			StringBuilder result = new StringBuilder();
-
 			XcodeOutputProcessor processor = new XcodeOutputProcessor();
-			foreach (TestCase t in processor.ProcessOutput(stream))
-			{
-				string errMsg = t.Status ? "" : $" ({t.Message})";
-				result.Append($"Test '{t.Name}' {t.StatusString} in {t.Duration} seconds{errMsg}.\n");
-			}
-
-			return result.ToString();
+			List<TestCase> cases = processor.ProcessOutput(stream).ToList();
+			return GXtestResultGenerator.Generate(cases);
 		}
     }
 }
