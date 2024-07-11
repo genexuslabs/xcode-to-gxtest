@@ -1,7 +1,7 @@
+⚠️ This repo is a first prototype to transform Xcode to GXtest. It is not longer under development.
+
 # xcode-to-gxtest
 Small utility to transform Xcode output to required GXtest format
-
-WARNING: Currently under development!
 
 ## Building
 ```
